@@ -6,7 +6,9 @@ Simple backup utility over SSH.
 
 * Sends backups over SSH to a server
 * Makes lists of installed packages for simple reinstallation
-* More coming soon!
+* Works on most linux distros
+* Variable destination and source directories
+* More features coming soon!
 
 ## Requirements
 

@@ -1,7 +1,6 @@
 #!/bin/bash
 CONFIG=$HOME/.config/rsyncraft/config.conf
-mkdir $HOME/.config/rsyncraft
-touch $CONFIG
+mkdir -p $HOME/.config/rsyncraft
 cat > "$CONFIG" << 'EOF'
 BACKUP_SOURCE=/home
 BACKUP_DEST=/var/backups/home

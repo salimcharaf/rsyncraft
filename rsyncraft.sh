@@ -1,4 +1,5 @@
 #!/bin/bash
+# I might add some comments later
 set -euo pipefail
 
 CONFIG="$HOME/.config/rsyncraft/config.conf"
