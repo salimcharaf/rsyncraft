@@ -28,8 +28,7 @@ Usually, any half-modern Linux installation should have these requirements fulfi
 
 Clone the repository and enter it with:
 
-`git clone https://github.com/salimcharaf/rsyncraft`
-`cd rsyncraft`
+`git clone https://github.com/salimcharaf/rsyncraft && cd rsyncraft`
 
 Then run the installer with:
 
