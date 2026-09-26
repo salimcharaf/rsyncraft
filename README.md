@@ -26,23 +26,23 @@ Usually, any half-modern Linux installation should have these requirements fulfi
 
 ## Installation
 
-Run the installer with:
+Clone the repository and enter it with:
+
+`git clone https://github.com/salimcharaf/rsyncraft
+cd rsyncraft`
+
+Then run the installer with:
 
 
 `./install.sh`
-
-
-Run this command while in the directory containing the rsyncraft scripts.
 
 This will create a configuration file at `~/.config/rsyncraft/config.conf`.
 
 You can edit the directory to be backed up and the destination directory on the server in this file.
 
-You can either move the script to a directory included in your `$PATH`, which allows you to run rsyncraft like a normal command, or continue running it with:
+You can either move the script to a directory included in your `$PATH` like `/usr/local/bin` and rename it to just `rsyncraft` (the recommended option), which allows you to run rsyncraft like a normal command, or continue running it with:
 
 `./rsyncraft.sh`
-
-It is recommended to rename the script to `rsyncraft` if you move it into a directory in your `$PATH`, so it can be run like any other normal command.
 
 ## Usage
 
