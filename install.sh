@@ -5,4 +5,4 @@ cat > "$CONFIG" << 'EOF'
 BACKUP_SOURCE=/home
 BACKUP_DEST=/var/backups/home
 EOF
-echo "done. config file has been deposited at $HOME/.config/rsyncraft/config.conf. deleting this file and running rbackup can lead to severe breakeages if the scripts safety measures fail."
+echo "done. config file has been deposited at $HOME/.config/rsyncraft/config.conf. deleting this file and running rsyncraft can lead to severe breakeages if the scripts safety measures fail."

@@ -64,8 +64,13 @@ This does the same as the basic backup, but also generates a package list if a s
 
 Note that package list generation can break if multiple supported package managers are installed. Only use the `-p` option if your system has one supported package manager installed.
 
-### Help
+### Configuration file generation
 
+Sometimes you will need to regenerate the configuration file, which you can do by running the following command:
+
+`rsyncraft -c`
+
+### Help
 
 `rsyncraft -h`
 

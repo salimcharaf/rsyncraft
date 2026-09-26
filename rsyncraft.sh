@@ -1,27 +1,26 @@
 #!/bin/bash
-# I might add some comments later
 set -euo pipefail
 
 CONFIG="$HOME/.config/rsyncraft/config.conf"
 
-if [ ! -f "$CONFIG" ]; then
+if [ ! -f "$CONFIG" ] && [ "${1:-}" != "-c" ]; then
     echo "Error: Config file not found: $CONFIG" >&2
-    echo "Run ./rsyncraftinstall.sh first." >&2
+    echo "Run rsyncraft with only the -c flag first." >&2
     exit 2
 fi
 
-source "$CONFIG"
+[ -f "$CONFIG" ] && source "$CONFIG"
 
 if [ $# -eq 0 ]; then
-    echo "Error: No SSH server provided." >&2
-    echo "Usage: $0 [-p] -s root@server" >&2
+    echo "Error: No arguments porvided." >&2
+    echo "Usage: $0 [-p] -s root@server or $0 -c" >&2
     exit 2
 fi
 
 SERVER=""
 PACLIST=0
 
-while getopts "s:ph" opt; do
+while getopts "s:phc" opt; do
     case "$opt" in
         s)
             SERVER="$OPTARG"
@@ -30,20 +29,30 @@ while getopts "s:ph" opt; do
             PACLIST=1
             ;;
         h)
-            echo "Usage: rsyncraft -s root@server [-p] [-h]"
+            echo "Usage: rsyncraft -s root@server [-p] [-h] "
             echo
-            echo "-s SERVER    SSH server to back up to"
-            echo "-p           Generate installed package lists"
-            echo "-h           Show this help message"
+            echo "-s SERVER	SSH server to back up to"
+            echo "-p		Generate installed package lists"
+            echo "-h		Show this help message"
+	    echo "-c		Generate config file"
             exit 0
             ;;
+	c)
+	    mkdir -p "$HOME/.config/rsyncraft"
+	    cat > "$CONFIG" <<-'EOF'
+BACKUP_SOURCE=/home
+BACKUP_DEST=/var/backups/home
+EOF
+	    exit 0
+	    ;;
         \?)
             echo "Error: Invalid option: -$OPTARG" >&2
 	    echo "Usage: rsyncraft -s root@server [-p] [-h]"
             echo
-            echo "-s SERVER    SSH server to back up to"
-            echo "-p           Generate installed package lists"
-            echo "-h           Show this help message"
+            echo "-s SERVER	SSH server to back up to"
+            echo "-p		Generate installed package lists"
+            echo "-h		Show this help message"
+	    echo "-c		Generate config file"
             exit 2
             ;;
         :)
